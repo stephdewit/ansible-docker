@@ -27,7 +27,6 @@
     dest: "{{ docker_ssl_directory }}/ca.pem"
     mode: "0644"
   notify: Restart Docker service
-  when: not ansible_check_mode # Ansible bug #65687
 - name: Add server certificate
   ansible.builtin.copy:
     content: "{{ docker_tcp_cert }}"

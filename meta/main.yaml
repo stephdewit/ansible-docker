@@ -1,0 +1,20 @@
+---
+galaxy_info:
+  author: Stephane de Wit
+  description: Install Docker service with optional TCP socket
+  company: Twenty Eight Solutions
+  license: BSD
+  role_name: docker
+  min_ansible_version: '2.6'
+  platforms:
+    - name: Debian
+      versions:
+        - jessie
+        - stretch
+        - buster
+        - bullseye
+        - bookworm
+  galaxy_tags:
+    - docker
+    - containers
+dependencies: []

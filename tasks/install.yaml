@@ -15,8 +15,13 @@
       - curl
       - gnupg
 - name: Download GPG key
-  ansible.builtin.get_url:
-    url: "{{ docker_apt_repository.gpg_key.url }}"
+  ansible.builtin.copy:
+    content: >-
+      {{ lookup(
+        'ansible.builtin.url',
+        docker_apt_repository.gpg_key.url,
+        split_lines=False)
+      }}
     dest: "{{ docker_apt_repository.gpg_key.path }}.ascii"
     mode: "0644"
   notify: Dearmor GPG key

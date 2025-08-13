@@ -4,7 +4,7 @@ docker_apt_repository:
     url: https://download.docker.com/linux/debian/gpg
     path: /usr/share/keyrings/docker-archive-keyring.gpg
   url: https://download.docker.com/linux/debian
-  distribution: bookworm
+  distribution: trixie
   components: stable
 docker_configuration_directory: /etc/docker
 docker_ssl_directory: "{{ docker_configuration_directory }}/ssl"

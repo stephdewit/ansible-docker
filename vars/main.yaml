@@ -5,3 +5,8 @@ docker_apt_repository_entry: >-
   {{ docker_apt_repository.url }}
   {{ docker_apt_repository.distribution }}
   {{ docker_apt_repository.components }}
+docker_tcp_socket_enabled: "{{
+    docker_tcp_port is defined and
+    docker_tcp_ca is defined and
+    docker_tcp_cert is defined and
+    docker_tcp_key is defined }}"

@@ -2,8 +2,4 @@
   ansible.builtin.include_tasks: install.yaml
 - name: TCP socket
   ansible.builtin.include_tasks: tcp-socket.yaml
-  when: >-
-    docker_tcp_port is defined and
-    docker_tcp_ca is defined and
-    docker_tcp_cert is defined and
-    docker_tcp_key is defined
+  when: docker_tcp_socket_enabled

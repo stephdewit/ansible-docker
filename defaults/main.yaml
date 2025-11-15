@@ -8,3 +8,4 @@ docker_apt_repository:
   components: stable
 docker_configuration_directory: /etc/docker
 docker_ssl_directory: "{{ docker_configuration_directory }}/ssl"
+docker_systemd_unit_directory: /etc/systemd/system/docker.service.d

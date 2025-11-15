@@ -1,8 +1,3 @@
-- name: Create Systemd override directory
-  ansible.builtin.file:
-    path: "{{ docker_systemd_unit_directory }}"
-    state: directory
-    mode: "0755"
 - name: Remove socket configuration from Systemd
   ansible.builtin.copy:
     src: 10-remove-sockets.conf

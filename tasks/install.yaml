@@ -37,3 +37,20 @@
       - docker-ce
       - docker-ce-cli
       - containerd.io
+- name: Configure API version
+  ansible.builtin.template:
+    src: 20-api-version.conf.j2
+    dest: "{{ docker_systemd_unit_directory }}/20-api-version.conf"
+    mode: "0644"
+  when: docker_min_api_version is defined
+  notify:
+    - Reload Systemd
+    - Restart Docker service
+- name: Configure default API version
+  ansible.builtin.file:
+    path: "{{ docker_systemd_unit_directory }}/20-api-version.conf"
+    state: absent
+  when: docker_min_api_version is undefined
+  notify:
+    - Reload Systemd
+    - Restart Docker service

@@ -1,6 +1,8 @@
 argument_specs:
   main:
     options:
+      docker_min_api_version:
+        type: "str"
       docker_tcp_port:
         type: "int"
       docker_tcp_ca:

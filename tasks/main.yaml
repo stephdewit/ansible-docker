@@ -3,7 +3,7 @@
     path: "{{ docker_systemd_unit_directory }}"
     state: directory
     mode: "0755"
-  when: docker_tcp_socket_enabled
+  when: docker_tcp_socket_enabled or docker_min_api_version is defined
 - name: Install
   ansible.builtin.include_tasks: install.yaml
 - name: TCP socket

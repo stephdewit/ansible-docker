@@ -28,8 +28,14 @@
 - name: Flush handlers
   ansible.builtin.meta: flush_handlers
 - name: Add APT repository
-  ansible.builtin.apt_repository:
-    repo: "{{ docker_apt_repository_entry }}"
+  ansible.builtin.deb822_repository:
+    name: docker
+    types: deb
+    uris: "{{ docker_apt_repository.url }}"
+    suites: "{{ docker_apt_repository.distribution }}"
+    components: "{{ docker_apt_repository.components }}"
+    architectures: "{{ docker_apt_repository.arch }}"
+    signed_by: "{{ docker_apt_repository.gpg_key.path }}"
     state: present
 - name: Install
   ansible.builtin.apt:

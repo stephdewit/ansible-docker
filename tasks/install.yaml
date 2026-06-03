@@ -12,21 +12,6 @@
     name:
       - apt-transport-https
       - ca-certificates
-      - curl
-      - gnupg
-- name: Download GPG key
-  ansible.builtin.copy:
-    content: >-
-      {{ lookup(
-        'ansible.builtin.url',
-        docker_apt_repository.gpg_key.url,
-        split_lines=False)
-      }}
-    dest: "{{ docker_apt_repository.gpg_key.path }}.ascii"
-    mode: "0644"
-  notify: Dearmor GPG key
-- name: Flush handlers
-  ansible.builtin.meta: flush_handlers
 - name: Add APT repository
   ansible.builtin.deb822_repository:
     name: docker
@@ -35,7 +20,7 @@
     suites: "{{ docker_apt_repository.distribution }}"
     components: "{{ docker_apt_repository.components }}"
     architectures: "{{ docker_apt_repository.arch }}"
-    signed_by: "{{ docker_apt_repository.gpg_key.path }}"
+    signed_by: "{{ docker_apt_repository.gpg_key_url }}"
     state: present
 - name: Install
   ansible.builtin.apt:

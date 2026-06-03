@@ -1,8 +1,6 @@
 docker_apt_repository:
   arch: amd64
-  gpg_key:
-    url: https://download.docker.com/linux/debian/gpg
-    path: /usr/share/keyrings/docker-archive-keyring.gpg
+  gpg_key_url: https://download.docker.com/linux/debian/gpg
   url: https://download.docker.com/linux/debian
   distribution: trixie
   components: stable
